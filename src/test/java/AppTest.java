@@ -10,7 +10,9 @@ public class AppTest {
 
         String result = myApp.getStatus();
 
-        assertEquals("OK", result);
+        assertTrue(result.contains("<h1>Paul Foseh</h1>"));
+        assertTrue(result.contains("<p>Senior DevOps, Cloud, SRE &amp; DevSecOps Engineer"));
+        assertTrue(result.indexOf("<h1>") < result.indexOf("<p>"));
     }
 
 }
