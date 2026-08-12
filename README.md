@@ -1,12 +1,48 @@
-##### build the project
+# Java App
 
-    ./gradlew build
+A small Spring Boot service that exposes its current status as JSON.
 
-##### build Docker image called java-app. Execute from root
+## Requirements
 
-    docker build -t java-app .
-    
-##### push image to repo 
+- Java 17 or newer
+- Docker (optional)
 
-    docker tag java-app demo-app:java-1.0
+## Run locally
+
+On macOS or Linux:
+
+```sh
+./gradlew bootRun
+```
+
+On Windows:
+
+```powershell
+.\gradlew.bat bootRun
+```
+
+Then open <http://localhost:8080/status>. The response is:
+
+```json
+{"application":"java-app","status":"OK"}
+```
+
+## Test and build
+
+```sh
+./gradlew build
+```
+
+## Run with Docker
+
+```sh
+docker build -t java-app .
+docker run --rm -p 8080:8080 java-app
+```
+
+## Continuous integration
+
+GitHub Actions builds and tests every push and pull request targeting `master`.
+Pushes to `master` also publish `java-app` to Docker Hub using the repository
+secrets `DOCKER_USERNAME` and `DOCKER_ACCESS_TOKEN`.
     
